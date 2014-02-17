@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- Basic settings -->
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.fekepp.maven-helpers</groupId>
+		<artifactId>maven-helpers</artifactId>
+		<version>0.0.2</version>
+	</parent>
+	<artifactId>dependency-executor</artifactId>
+
+	<!-- Properties -->
+	<properties>
+		<group>org.apache.any23</group>
+		<artifact>apache-any23-core</artifact>
+		<version>0.9.0</version>
+		<main>org.apache.any23.cli.ToolRunner</main>
+		<exec.args>rover http://www.lassila.org/ora.rdf#me -f turtle</exec.args>
+	</properties>
+
+	<!-- Dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>${group}</groupId>
+			<artifactId>${artifact}</artifactId>
+			<version>${version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<!-- Build configuration -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>${main}</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

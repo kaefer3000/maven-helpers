@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- Repositories -->
+	<repositories>
+		<repository>
+			<id>repository-nxparser</id>
+			<url>http://nxparser.googlecode.com/svn/repository</url>
+		</repository>
+	</repositories>
+
+	<!-- Basic settings -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.fekepp.maven-helpers</groupId>
+	<artifactId>maven-helpers</artifactId>
+	<version>0.0.2</version>
+	<packaging>pom</packaging>
+
+	<!-- Modules -->
+	<modules>
+		<module>dependency-executor</module>
+		<module>dependency-wrapper</module>
+	</modules>
+
+	<!-- Properties -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+	</properties>
+
+
+	<!-- Dependencies -->
+	<dependencies>
+
+		<!-- Logging -->
+		<!-- Include SLF4J dependencies to avoid version conflicts -->
+		<!-- Replace Log4j via log4j-over-slf4j -->
+		<!-- Exclude Log4j and SLF4J-Log4j12 bridge in modules -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+</project>
